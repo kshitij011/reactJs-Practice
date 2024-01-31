@@ -2,6 +2,15 @@ import {Greet} from "./components/Greet.js"
 import {Message} from "./components/Message.js"
 import {ClickHandler} from "./components/ClickHandler.js"
 import {ParentComponent} from "./components/ParentComponent.js"
+import { LoggedIn } from "./components/conditionalLogin.js"
+import {List} from "./components/ListRendering.js"
+import { Stylesheet } from "./components/Stylesheets.js"
+import { Inline } from "./components/Inline.js"
+import './appStyle.css'
+import styles from './appStyle.module.css'
+import { Form } from "./components/Form.js"
+import { PostList } from "./components/PostList.js"
+import { PostForm } from "./components/PostForm.js"
 
 function App() {
   return (
@@ -20,6 +29,19 @@ function App() {
     <ClickHandler />
 
     <ParentComponent />
+    <LoggedIn />
+
+    <List />
+
+    <Stylesheet />
+
+    <Inline/>
+
+    <h1 className='error'>error</h1>
+    <h1 className={styles.sucess}>sucess</h1>
+    <Form/>
+
+    <PostForm/>
     </>
   );
 }
