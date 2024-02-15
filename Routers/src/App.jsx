@@ -1,10 +1,10 @@
 //React Router is a fully featured client and server side routing library for react.
 //It helps create and navigate between different URLs that makeup web application.
 
+import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
 import { Home } from './components/Home'
-import { About } from './components/About'
+// import { About } from './components/About'
 import './App.css'
 import { Navbar } from './components/Navbar'
 import { OrderSummary } from './components/OrderSummary'
@@ -16,15 +16,18 @@ import { Users } from './components/Users'
 import { UserDetails } from './components/UserDetails'
 import { Admin } from './components/Admin'
 
+//lazy function is a fun that takes another function as argument
+//a promise is returned by this dynamic import which is then converted into a module that contains default exported react component
+const LazyAbout = React.lazy(()=> import('./components/About'))
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
     <Navbar />
     <Routes>
       <Route path='/' element={<Home />} />
-      <Route path='/about' element={<About />} />
+      <Route path='/about' element={<React.Suspense fallback='Loading...'><LazyAbout /></React.Suspense>} />
       <Route path='/order-summary' element={<OrderSummary/>} />
       <Route path='*' element={<NoMatch />} />
       <Route path='products' element={<Products />}>
