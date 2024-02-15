@@ -15,6 +15,10 @@ import { NewProducts } from './components/NewProducts'
 import { Users } from './components/Users'
 import { UserDetails } from './components/UserDetails'
 import { Admin } from './components/Admin'
+import { Profile } from './components/Profile'
+import { AuthProvider } from './components/Auth'
+import { Login } from './components/Login'
+import { RequireAuth } from './components/RequireAuth'
 
 //lazy function is a fun that takes another function as argument
 //a promise is returned by this dynamic import which is then converted into a module that contains default exported react component
@@ -23,7 +27,7 @@ const LazyAbout = React.lazy(()=> import('./components/About'))
 function App() {
 
   return (
-    <>
+    <AuthProvider>
     <Navbar />
     <Routes>
       <Route path='/' element={<Home />} />
@@ -41,10 +45,12 @@ function App() {
         {/* <Route path='users/3' element={<UserDetails/>} /> */}
         <Route path='admin' element={<Admin/>} />     {/*React router first matches the route that is more specific. If not found the :userId will be rendered */}
       </Route>
+      <Route path='profile' element={<RequireAuth><Profile /></RequireAuth>} />
+      <Route path='login' element={<Login />} />
 
     </Routes>
 
-    </>
+    </AuthProvider>
   )
 }
 
