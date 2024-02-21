@@ -18,3 +18,64 @@ nav .brandName{
   color: orange;
   font-weight: 800;
 }
+
+span{
+  background-color: grey;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+h2{
+  /* max-width: 80%; */
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+
+.columns{
+  width:30%;
+  border: 2px solid black;
+}
+
+.row{
+  margin: 2%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-grp{
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+}
+
+button{
+  margin: 4px;
+  height: 90%;
+  width: 3rem;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.minus{
+  background-color: red;
+}
+
+.middle{
+  background-color: yellow;
+  min-width: 35%;
+}
+
+.plus{
+  background-color: green;
+}
+
+.total{
+  border: 2px solid black;
+  width: 5rem;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  justify-content: center;
+}
