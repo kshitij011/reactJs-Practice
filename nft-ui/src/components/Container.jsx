@@ -1,4 +1,6 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+
+// import React from 'react'
 import HappyGuy from "../../public/Images/happy.jpg"
 import CalmGuy from "../../public/Images/calm.png"
 import StraightGuy from "../../public/Images/straight.jpg"
@@ -7,6 +9,73 @@ import AngryGuy from "../../public/Images/angry.jpg"
 import SadGuy from "../../public/Images/sad.jpg"
 
 export const Container = () => {
+
+    const boxes = document.querySelectorAll('.box')
+    const overlay = document.querySelectorAll('.overlay')
+    const popup = document.querySelectorAll('.popup')
+    // const close = document.getElementById('btn-close')
+    const imageChange = document.querySelectorAll('.change')
+    const lower = document.querySelectorAll('.lower')
+    const navigation = document.querySelectorAll('.navigation')
+    const headClose = document.querySelectorAll('.navigation-head')
+
+useEffect(()=>{
+    boxes.forEach((box)=> box.addEventListener('click', (e) =>{
+        console.log('hey');
+        const img = e.target.src;
+        imageChange.src = img;
+        overlay.classList.add("show");
+        popup.classList.add('show');
+    }))
+})
+
+const headCloseArray = Array.from(headClose);
+const lowerArray = Array.from(lower);
+useEffect(()=>{
+    console.log('headClose: ', headClose);
+    console.log('lower: ', lower);
+
+    headCloseArray.forEach((el) => {
+        el.addEventListener('click', () => {
+            navigation.classList.remove('slide');
+        });
+    });
+
+    lowerArray.forEach((el) => {
+        el.addEventListener('click', () => {
+            navigation.classList.remove('slide');
+        });
+    });
+})
+
+useEffect(()=>{
+    lowerArray.forEach((el) => {
+        el.addEventListener('click', () => {
+            navigation.classList.add('slide');
+        });
+    });
+})
+
+// useEffect(()=>{
+//     close.addEventListener('click', ()=>{
+//         overlay.classList.remove('show')
+//         popup.classList.remove('show')
+//     })
+// })
+
+document.addEventListener('DOMContentLoaded', function() {
+    const close = document.getElementById('btn-close');
+
+    if (close) {
+        close.addEventListener('click', () => {
+            overlay.classList.remove('show');
+            popup.classList.remove('show');
+        });
+    } else {
+        console.error('Element with id "btn-close" not found.');
+    }
+});
+
   return (
     <div>
         <div className='container'>
